@@ -8,7 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 
 class MainActivity : ComponentActivity() {
-    private val counterViewModel: MVVM by viewModels()
+    private val counterViewModel: ViewModelCounter by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

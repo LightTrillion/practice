@@ -11,7 +11,7 @@ data class CounterUiState(
     val history: List<String> = emptyList()
 )
 
-class MVVM : ViewModel() {
+class ViewModelCounter : ViewModel() {
     private val _uiState = MutableStateFlow(CounterUiState())
     val uiState: StateFlow<CounterUiState> = _uiState.asStateFlow()
 
