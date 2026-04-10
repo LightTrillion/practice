@@ -20,7 +20,14 @@ class AuthViewModel : ViewModel() {
 
     fun loadGroups() {
         viewModelScope.launch {
-            repository.getGroups().onSuccess { groupsList = it }
+            repository.getGroups()
+                .onSuccess {
+                    groupsList = it
+                }
+                .onFailure { error ->
+                    error.printStackTrace()
+                    errorMessage = "Ошибка загрузки групп: ${error.message}"
+                }
         }
     }
 

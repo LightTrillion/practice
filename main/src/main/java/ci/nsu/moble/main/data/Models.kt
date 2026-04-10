@@ -38,7 +38,13 @@ data class AuthResponse(val token: String)
 
 @Serializable
 data class UserDto(
+    val userId: Int,
     val login: String,
     val email: String,
-    val person: PersonDto
+    val phoneNumber: String? = null,
+    val roleId: Int,
+    val authAllowed: Boolean,
+    val personId: Int,
+    val createdDate: String? = null,
+    val lastLoginDate: String? = null
 )

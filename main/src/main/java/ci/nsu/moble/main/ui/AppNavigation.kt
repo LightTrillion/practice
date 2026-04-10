@@ -134,13 +134,13 @@ fun RegisterScreen(navController: NavController, viewModel: AuthViewModel) {
                 .fillMaxSize()
                 .padding(padding)
                 .padding(16.dp)
-                .verticalScroll(scrollState) // Делаем экран прокручиваемым
+                .verticalScroll(scrollState)
         ) {
             OutlinedTextField(value = lastName, onValueChange = { lastName = it }, label = { Text("Фамилия") }, modifier = Modifier.fillMaxWidth())
             OutlinedTextField(value = firstName, onValueChange = { firstName = it }, label = { Text("Имя") }, modifier = Modifier.fillMaxWidth())
             OutlinedTextField(value = middleName, onValueChange = { middleName = it }, label = { Text("Отчество (необязательно)") }, modifier = Modifier.fillMaxWidth())
             OutlinedTextField(value = birthDate, onValueChange = { birthDate = it }, label = { Text("Дата рождения (например: 2000-01-01)") }, modifier = Modifier.fillMaxWidth())
-            OutlinedTextField(value = gender, onValueChange = { gender = it }, label = { Text("Пол (M/F)") }, modifier = Modifier.fillMaxWidth())
+            OutlinedTextField(value = gender, onValueChange = { gender = it }, label = { Text("Пол (MALE/FEMALE)") }, modifier = Modifier.fillMaxWidth())
 
             Spacer(modifier = Modifier.height(8.dp))
 
@@ -251,9 +251,12 @@ fun MainScreen(navController: NavController, viewModel: AuthViewModel) {
                         ) {
                             Column(modifier = Modifier.padding(16.dp)) {
                                 Text("Логин: ${user.login}", style = MaterialTheme.typography.titleMedium)
-                                Text("ФИО: ${user.person.lastName} ${user.person.firstName} ${user.person.middleName ?: ""}")
                                 Text("Email: ${user.email}", style = MaterialTheme.typography.bodyMedium)
-                                Text("Группа ID: ${user.person.groupId}", style = MaterialTheme.typography.bodySmall)
+                                if (user.phoneNumber != null) {
+                                    Text("Телефон: ${user.phoneNumber}", style = MaterialTheme.typography.bodyMedium)
+                                }
+                                Text("Person ID: ${user.personId}", style = MaterialTheme.typography.bodySmall)
+                                Text("Роль ID: ${user.roleId}", style = MaterialTheme.typography.bodySmall)
                             }
                         }
                     }
