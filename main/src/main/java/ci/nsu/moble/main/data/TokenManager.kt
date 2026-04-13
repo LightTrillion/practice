@@ -16,7 +16,13 @@ object TokenManager {
             prefs?.edit()?.putString("jwt_token", value)?.apply()
         }
 
+    var userId: Int
+        get() = prefs?.getInt("user_id", -1) ?: -1
+        set(value) {
+            prefs?.edit()?.putInt("user_id", value)?.apply()
+        }
+
     fun clear() {
-        prefs?.edit()?.remove("jwt_token")?.apply()
+        prefs?.edit()?.clear()?.apply()
     }
 }

@@ -15,10 +15,8 @@ class AuthInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest = chain.request()
         val requestBuilder = originalRequest.newBuilder()
-        val token = TokenManager.token
-
         requestBuilder.addHeader("Content-Type", "application/json")
-        token?.let {
+        TokenManager.token?.let {
             requestBuilder.addHeader("Authorization", "Bearer $it")
         }
         return chain.proceed(requestBuilder.build())
@@ -26,26 +24,15 @@ class AuthInterceptor : Interceptor {
 }
 
 interface ApiService {
-    @POST("auth/login")
-    suspend fun login(@Body request: LoginRequest): AuthResponse
-
-    @POST("auth/register")
-    suspend fun register(@Body request: RegisterRequest)
-
-    @GET("groups")
-    suspend fun getGroups(): List<GroupDto>
-
-    @GET("users")
-    suspend fun getUsers(): List<UserDto>
+    @POST("auth/login") suspend fun login(@Body request: LoginRequest): AuthResponse
+    @POST("auth/register") suspend fun register(@Body request: RegisterRequest)
+    @GET("groups") suspend fun getGroups(): List<GroupDto>
+    @GET("users") suspend fun getUsers(): List<UserDto>
 }
 
 object RetrofitClient {
     private const val BASE_URL = "http://192.168.200.160:8080/api/"
-
-    private val client = OkHttpClient.Builder()
-        .addInterceptor(AuthInterceptor())
-        .build()
-
+    private val client = OkHttpClient.Builder().addInterceptor(AuthInterceptor()).build()
     private val json = Json { ignoreUnknownKeys = true }
 
     val api: ApiService by lazy {
@@ -59,19 +46,8 @@ object RetrofitClient {
 }
 
 class AuthRepository {
-    suspend fun login(login: String, pass: String): Result<AuthResponse> = runCatching {
-        RetrofitClient.api.login(LoginRequest(login, pass))
-    }
-
-    suspend fun register(req: RegisterRequest): Result<Unit> = runCatching {
-        RetrofitClient.api.register(req)
-    }
-
-    suspend fun getUsers(): Result<List<UserDto>> = runCatching {
-        RetrofitClient.api.getUsers()
-    }
-
-    suspend fun getGroups(): Result<List<GroupDto>> = runCatching {
-        RetrofitClient.api.getGroups()
-    }
+    suspend fun login(login: String, pass: String): Result<AuthResponse> = runCatching { RetrofitClient.api.login(LoginRequest(login, pass)) }
+    suspend fun register(req: RegisterRequest): Result<Unit> = runCatching { RetrofitClient.api.register(req) }
+    suspend fun getUsers(): Result<List<UserDto>> = runCatching { RetrofitClient.api.getUsers() }
+    suspend fun getGroups(): Result<List<GroupDto>> = runCatching { RetrofitClient.api.getGroups() }
 }
