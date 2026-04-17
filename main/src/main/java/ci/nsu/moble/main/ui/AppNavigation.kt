@@ -28,16 +28,19 @@ fun AppNavigation() {
         composable("login") { LoginScreen(navController, authViewModel) }
         composable("register") { RegisterScreen(navController, authViewModel) }
         composable("main_flow") {
-            MainContainerScreen(rootNavController = navController, factory = factory)
+            MainContainerScreen(
+                rootNavController = navController,
+                factory = factory,
+                authViewModel = authViewModel
+            )
         }
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainContainerScreen(rootNavController: NavController, factory: ViewModelFactory) {
+fun MainContainerScreen(rootNavController: NavController, factory: ViewModelFactory, authViewModel: AuthViewModel) {
     val bottomNavController = rememberNavController()
-    val authViewModel: AuthViewModel = viewModel(factory = factory)
 
     Scaffold(
         topBar = {
@@ -47,7 +50,7 @@ fun MainContainerScreen(rootNavController: NavController, factory: ViewModelFact
                     TextButton(onClick = {
                         authViewModel.logout()
                         rootNavController.navigate("login") {
-                            popUpTo("main_flow") { inclusive = true }
+                            popUpTo(0) { inclusive = true }
                         }
                     }) { Text("Выход", color = MaterialTheme.colorScheme.error) }
                 }
