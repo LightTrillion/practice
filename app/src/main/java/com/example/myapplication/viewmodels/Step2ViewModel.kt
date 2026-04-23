@@ -1,4 +1,5 @@
-package com.example.myapplication
+package com.example.myapplication.viewmodels
+
 import androidx.lifecycle.ViewModel
 
 class Step2ViewModel : ViewModel() {

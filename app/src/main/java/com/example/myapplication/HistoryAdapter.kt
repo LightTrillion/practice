@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ItemDepositBinding
+import com.example.myapplication.entities.DepositEntity
 import java.text.SimpleDateFormat
 import java.util.*
 

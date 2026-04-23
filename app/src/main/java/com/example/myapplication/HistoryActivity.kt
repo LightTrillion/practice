@@ -6,6 +6,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.databinding.ActivityHistoryBinding
+import com.example.myapplication.entities.DepositEntity
+import com.example.myapplication.viewmodels.HistoryViewModel
 
 class HistoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHistoryBinding

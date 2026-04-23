@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityStep1Binding
+import com.example.myapplication.viewmodels.Step1ViewModel
 
 class Step1Activity : AppCompatActivity() {
     private lateinit var binding: ActivityStep1Binding

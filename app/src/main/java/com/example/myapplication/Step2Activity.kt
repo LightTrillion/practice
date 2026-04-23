@@ -6,6 +6,7 @@ import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityStep2Binding
+import com.example.myapplication.viewmodels.Step2ViewModel
 
 class Step2Activity : AppCompatActivity() {
     private lateinit var binding: ActivityStep2Binding

@@ -1,8 +1,11 @@
-package com.example.myapplication
+package com.example.myapplication.dbo
 
 import android.content.Context
-import androidx.room.*
-import kotlinx.coroutines.flow.Flow
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
+import com.example.myapplication.dao.DepositDao
+import com.example.myapplication.entities.DepositEntity
 
 @Database(entities = [DepositEntity::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {

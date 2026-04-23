@@ -6,6 +6,8 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityResultBinding
+import com.example.myapplication.entities.DepositEntity
+import com.example.myapplication.viewmodels.ResultViewModel
 
 class ResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResultBinding
