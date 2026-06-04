@@ -217,7 +217,7 @@ fun StepTwoScreen(navController: NavController, viewModel: DepositViewModel) {
     }
 }
 
-// валидация посредственная
+// посредственная валидация
 
 @Composable
 fun ResultScreen(navController: NavController, viewModel: DepositViewModel) {
