@@ -217,6 +217,8 @@ fun StepTwoScreen(navController: NavController, viewModel: DepositViewModel) {
     }
 }
 
+// валидация посредственная
+
 @Composable
 fun ResultScreen(navController: NavController, viewModel: DepositViewModel) {
     val context = LocalContext.current
